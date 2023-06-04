@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      .circle {
+        --bgc: aquamarine;
+        --w: 150px;
+        align-items: center;
+        background-color: var(--bgc);
+        border-radius: 50%;
+        color: #fff;
+        display: flex;
+        height: var(--w);
+        justify-content: center;
+        margin-bottom: 1rem;
+        width: var(--w);
+      }
+      .a-slide {
+        --animdur: 3s;
+        --animn: slide;
+      }
+      [data-animation] {
+        animation: var(--animn, none) var(--animdur, 0s) var(--animtf, linear)
+          var(--animdel, 0s) var(--animic, infinite) var(--animdir, alternate)
+          var(--animfm, none) var(--animps, running);
+      }
+      @keyframes slide {
+        from {
+          margin-left: 0%;
+        }
+        to {
+          margin-left: calc(100% - var(--w, 150px));
+        }
+      }
+    </style>
+    <script>
+      const start = () => {
+        let circle = document.getElementById("circle");
+        circle.className = "circle a-slide";
+      };
+      const stop = () => {
+        let circle = document.getElementById("circle");
+        circle.className = "circle";
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Click the buttons to handle animation</h1>
+    <button id="start" type="button" onclick="start()">Start</button> &emsp13;
+    <button id="stop" type="button" onclick="stop()">Stop</button>
+    <div class="circle" id="circle" data-animation="stop"></div>
+  </body>
+</html>
